@@ -1,0 +1,6 @@
+<% if @issue.closed_date -%>
+  <%= javascript_tag do -%>
+    $('th.start-date').html('<%=l(:field_start_end_date)%>:')
+    $('td.start-date').html('<%=format_date(@issue.start_date)%> - <%=format_date(@issue.closed_date)%>')
+  <% end -%>
+<% end -%>
