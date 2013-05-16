@@ -12,11 +12,11 @@ Redmine::Plugin.register :redmine_closed_issue do
 end
 
 Rails.configuration.to_prepare do
-  Query.add_available_column(
+  IssueQuery.add_available_column(
     QueryColumn.new(:closed_date, :sortable => "#{Issue.table_name}.closed_date", :groupable => true, :caption => :field_closed_date)
   )
 
-  unless Query.include? ClosedIssue::QueryPatch
-    Query.send( :include, ClosedIssue::QueryPatch)
+  unless IssueQuery.include? ClosedIssue::IssueQueryPatch
+    IssueQuery.send( :include, ClosedIssue::IssueQueryPatch)
   end
 end

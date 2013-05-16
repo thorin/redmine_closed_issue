@@ -1,5 +1,5 @@
 module ClosedIssue
-  module QueryPatch
+  module IssueQueryPatch
     def self.included(base) # :nodoc:
       base.class_eval do
         unloadable
