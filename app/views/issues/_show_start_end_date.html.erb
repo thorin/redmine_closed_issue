@@ -1,6 +1,13 @@
 <% if @issue.closed_date -%>
-  <%= javascript_tag do -%>
-    $('th.start-date').html('<%=l(:field_start_end_date)%>:')
-    $('td.start-date').html('<%=format_date(@issue.start_date)%> - <%=format_date(@issue.closed_date)%>')
+  <% if Redmine::VERSION.to_s >= '3.2' -%>
+    <%= javascript_tag do -%>
+      $('.start-date.attribute .label').html('<%=l(:field_start_end_date)%>:')
+      $('.start-date.attribute .value').html('<%=format_date(@issue.start_date)%> - <%=format_date(@issue.closed_date)%>')
+    <% end -%>
+  <% else -%>
+    <%= javascript_tag do -%>
+      $('th.start-date').html('<%=l(:field_start_end_date)%>:')
+      $('td.start-date').html('<%=format_date(@issue.start_date)%> - <%=format_date(@issue.closed_date)%>')
+    <% end -%>
   <% end -%>
 <% end -%>
